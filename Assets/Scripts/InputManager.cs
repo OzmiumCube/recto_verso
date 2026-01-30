@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
     public InputActionReference lookAction;
+    public InputActionReference swapObjectAction;
 
     private void OnEnable()
     {
@@ -18,6 +19,8 @@ public class InputManager : MonoBehaviour
         moveAction.action.Enable();
         jumpAction.action.Enable();
         lookAction.action.Enable();
+        swapObjectAction.action.Enable();
+
     }
 
     private void OnDisable()
@@ -26,6 +29,8 @@ public class InputManager : MonoBehaviour
         moveAction.action.Disable();
         jumpAction.action.Disable();
         lookAction.action.Disable();
+        swapObjectAction.action.Disable();
+
     }
 
     private void Awake()
