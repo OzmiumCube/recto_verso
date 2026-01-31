@@ -13,7 +13,10 @@ public class Look : MonoBehaviour
    
     private void Start()
     {
+        if (InputManager.Instance == null) return;
         playerController = GetComponent<PlayerController>();
+        InputManager.Instance.lookAction.action.performed += OnLook;
+        InputManager.Instance.lookAction.action.canceled += OnLook;
     }
 
     private void OnEnable()

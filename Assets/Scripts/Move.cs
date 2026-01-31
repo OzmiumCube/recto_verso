@@ -19,12 +19,16 @@ public class Move : MonoBehaviour
 
     private void Start()
     {
+        if (InputManager.Instance == null) return;
         playerController = GetComponent<PlayerController>();
+        InputManager.Instance.moveAction.action.performed += OnMove;
+        InputManager.Instance.moveAction.action.canceled += OnMove;
     }
 
     private void OnEnable()
     {
-         InputManager.Instance.moveAction.action.performed += OnMove;
+        if (InputManager.Instance == null) return;
+        InputManager.Instance.moveAction.action.performed += OnMove;
         // sprintAction.action.performed += OnSprint;
         InputManager.Instance.moveAction.action.canceled += OnMove;
        // sprintAction.action.canceled += OnSprint;
@@ -33,6 +37,7 @@ public class Move : MonoBehaviour
 
     private void OnDisable()
     {
+        if (InputManager.Instance == null) return;
         InputManager.Instance.moveAction.action.performed -= OnMove;
         // sprintAction.action.performed -= OnSprint;
         InputManager.Instance.moveAction.action.canceled -= OnMove;
