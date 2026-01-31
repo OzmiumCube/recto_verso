@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class Interact : MonoBehaviour
 {
     [SerializeField] float swapRange;
+    [SerializeField] float kickRange;
+    [SerializeField] float kickForce;
 
     [SerializeField] Transform room1Maskables;
     [SerializeField] Transform room2Maskables;
@@ -12,18 +14,22 @@ public class Interact : MonoBehaviour
     {
         if (InputManager.Instance == null) return;
         InputManager.Instance.swapObjectAction.action.performed += OnSwap;
+        InputManager.Instance.kickObjectAction.action.performed += OnKick;
     }
 
     private void OnEnable()
     {
         if (InputManager.Instance == null) return;
         InputManager.Instance.swapObjectAction.action.performed += OnSwap;
+        InputManager.Instance.kickObjectAction.action.performed += OnKick;
+
     }
 
     private void OnDisable()
     {
         if (InputManager.Instance == null) return;
         InputManager.Instance.swapObjectAction.action.performed -= OnSwap;
+        InputManager.Instance.kickObjectAction.action.performed -= OnKick;
 
     }
     private void OnSwap(InputAction.CallbackContext ctx)
@@ -31,6 +37,27 @@ public class Interact : MonoBehaviour
         CheckForMaskable();
     }
     
+    private void OnKick(InputAction.CallbackContext ctx)
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, kickRange))
+        {
+            if (hit.collider.CompareTag("Maskable"))
+            {
+                Vector3 kickDirection = ray.direction;
+                Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddForce(kickDirection * kickForce, ForceMode.Impulse);
+                }
+            }
+        }
+    }
+
+
+
 
     private void CheckForMaskable()
     {
