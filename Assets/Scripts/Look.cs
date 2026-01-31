@@ -21,12 +21,14 @@ public class Look : MonoBehaviour
 
     private void OnEnable()
     {
+        if (InputManager.Instance == null) return;
         InputManager.Instance.lookAction.action.performed += OnLook;
         InputManager.Instance.lookAction.action.canceled += OnLook;
     }
 
     private void OnDisable()
     {
+        if (InputManager.Instance == null) return;
         InputManager.Instance.lookAction.action.performed -= OnLook;
         InputManager.Instance.lookAction.action.canceled -= OnLook;
     }
