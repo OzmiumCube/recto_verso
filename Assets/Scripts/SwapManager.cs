@@ -6,7 +6,7 @@ public class SwapManager : MonoBehaviour
     [SerializeField] GameObject player1;
     [SerializeField] GameObject player2;
 
-    private int currentPlayer = 1;
+    public int currentPlayer = 1;
 
     private void OnEnable()
     {
