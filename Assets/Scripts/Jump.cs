@@ -17,18 +17,22 @@ public class Jump : MonoBehaviour
     private bool jumpStarting;
     private void Start()
     {
+        if (InputManager.Instance == null) return;
         playerController = GetComponent<PlayerController>();
+        InputManager.Instance.jumpAction.action.performed += OnJump;
     }
 
     void Awake() => rb = GetComponent<Rigidbody>();
 
     private void OnEnable()
     {
+        if (InputManager.Instance == null) return;
         InputManager.Instance.jumpAction.action.performed += OnJump;
     }
 
     private void OnDisable()
     {
+        if (InputManager.Instance == null) return;
         InputManager.Instance.jumpAction.action.performed -= OnJump;
     }
 
