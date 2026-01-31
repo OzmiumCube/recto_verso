@@ -16,16 +16,16 @@ public class MainMenu : MonoBehaviour
     }
 
     //loads game scene
-    public void loadGame()
+    public void LoadGame()
     {
         Debug.Log("Play Game button clicked");
-        SceneManager.LoadScene(1);//game scene
+        SceneManager.LoadScene("Test");//game scene
 
     }
 
 
     //quits the game
-    public void quitGame()
+    public void QuitGame()
     {
         Debug.Log("Quit Game button clicked");
         Application.Quit();

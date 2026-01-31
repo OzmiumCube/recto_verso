@@ -46,34 +46,20 @@ public class Jump : MonoBehaviour
     }
 
 
-    private void Update()
+    void FixedUpdate()
     {
         if (jumpQueued)
         {
-            if(playerController.currentState == PlayerState.Idle)
-            {
-                StartCoroutine(JumpRoutine());
-            }
-        }
-
-
-        if (playerController.currentState == PlayerState.Jumping && playerController.grounded && !jumpStarting)
-        {
-            playerController.currentState =  PlayerState.Idle;
+            DoJump();
+            jumpQueued = false;
         }
     }
 
-    private IEnumerator JumpRoutine()
+    void DoJump()
     {
         Vector3 v = rb.linearVelocity;
         v.y = 0f;
-        rb.linearVelocity = v;
         rb.linearVelocity += Vector3.up * verticalJumpForce;
-        jumpQueued = false;
-
-        jumpStarting = true;
-        playerController.currentState = PlayerState.Jumping;
-        yield return new WaitForSeconds(0.3f);
-        jumpStarting = false;
     }
+
 }

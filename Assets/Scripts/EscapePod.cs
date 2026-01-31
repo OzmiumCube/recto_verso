@@ -11,7 +11,15 @@ public class EscapePod : MonoBehaviour
         if(other.transform.CompareTag("Player"))
         {
           
-            gameManager.PlayerEscape(playerID);
+            gameManager.PlayerAtEscape(playerID);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.CompareTag("Player"))
+        {
+            gameManager.PlayerLeaveEscape(playerID);
         }
     }
 }

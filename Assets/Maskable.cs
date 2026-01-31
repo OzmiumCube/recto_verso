@@ -1,4 +1,5 @@
 using MoreMountains.Feedbacks;
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Reflection;
 using UnityEditor.Rendering;
@@ -8,30 +9,39 @@ public class Maskable : MonoBehaviour
 {
     [SerializeField] MMF_Player maskFeedback;
 
+    [SerializeField] GameObject[] objectsToShadow;
     [SerializeField] Material shadowMaterial;
 
     public GameObject currentMaskedObject;
 
     private IEnumerator MaskRoutine(Transform newParent)
     {
-        yield return StartCoroutine(maskFeedback.PlayFeedbacksCoroutine(transform.position, 1f, false));
+        maskFeedback.PlayFeedbacks();
+        yield return new WaitForSeconds(1f);
 
         if (currentMaskedObject == null)
         {
             currentMaskedObject = new GameObject("MaskedObject");
+            for (int i = 0; i < objectsToShadow.Length; i++)
+            {
+                GameObject childObject = new GameObject("Child");
 
-            MeshFilter originalMeshFilter = gameObject.GetComponent<MeshFilter>();
-            MeshFilter copyMeshFilter = currentMaskedObject.AddComponent<MeshFilter>();
-            copyMeshFilter.mesh = originalMeshFilter.mesh;
+                MeshFilter originalMeshFilter = objectsToShadow[i].GetComponent<MeshFilter>();
+                MeshFilter copyMeshFilter = childObject.AddComponent<MeshFilter>();
+                copyMeshFilter.mesh = originalMeshFilter.mesh;
 
-            MeshRenderer originalMeshRenderer = gameObject.GetComponent<MeshRenderer>();
-            MeshRenderer copyMeshRenderer = currentMaskedObject.AddComponent<MeshRenderer>();
-            copyMeshRenderer.materials = originalMeshRenderer.materials;
+                MeshRenderer originalMeshRenderer = objectsToShadow[i].GetComponent<MeshRenderer>();
+                MeshRenderer copyMeshRenderer = childObject.AddComponent<MeshRenderer>();
+                copyMeshRenderer.materials = originalMeshRenderer.materials;
 
-            currentMaskedObject.GetComponent<Renderer>().material = shadowMaterial;
+                childObject.GetComponent<Renderer>().material = shadowMaterial;
 
-            currentMaskedObject.transform.parent = gameObject.transform.parent;
+                childObject.transform.localScale = objectsToShadow[i].transform.localScale;
+                childObject.transform.localPosition = objectsToShadow[i].transform.localPosition;
+                childObject.transform.localRotation = objectsToShadow[i].transform.localRotation;
 
+                childObject.transform.SetParent(currentMaskedObject.transform, false);
+            }
         }
         currentMaskedObject.transform.SetParent(gameObject.transform.parent, false);
         gameObject.transform.SetParent(newParent, false);

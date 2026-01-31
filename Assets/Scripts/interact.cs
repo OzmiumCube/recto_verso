@@ -80,11 +80,11 @@ public class Interact : MonoBehaviour
         if (roomTransform == room1Maskables)
         {
             print("Moving to room 2!");
-            objectHit.transform.SetParent(room2Maskables, false);
+            objectHit.GetComponent<Maskable>().OnMask(room2Maskables);
         } 
         else
         {
-            objectHit.transform.SetParent(room1Maskables,false);
+            objectHit.GetComponent<Maskable>().OnMask(room1Maskables);
             print("Moving to room 1!");
         }
     }

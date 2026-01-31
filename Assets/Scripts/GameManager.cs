@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] string nextLevelSceneName;
 
-    public void PlayerEscape(int player)
+    public void PlayerAtEscape(int player)
     {
         print("here");
         if(player == 1) playerOneEscaped = true;
@@ -20,10 +20,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayerLeaveEscape(int player)
+    {
+        if (player == 1) playerOneEscaped = false;
+        else if (player == 2) playerTwoEscaped = false;
+    }
+
     private void SwitchLevel()
     {
         print("Escaped!");
-        SceneManager.LoadScene(nextLevelSceneName);
+        SceneManager.LoadScene("Main_Menu");
     }
 
 }

@@ -69,10 +69,11 @@ public class Move : MonoBehaviour
         Vector3 currentXZ = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
         Vector3 newXZ = Vector3.MoveTowards(currentXZ, targetVel, acceleration * Time.fixedDeltaTime);
-        rb.linearVelocity = new Vector3(newXZ.x, rb.linearVelocity.y, newXZ.z);
-        rb.linearDamping = inputDir.magnitude > 0.1f ? 0f : 5f;
+        rb.linearVelocity = new Vector3(newXZ.x, rb.linearVelocity.y,newXZ.z);
 
-        if(rb.linearVelocity.x != 0f || rb.linearVelocity.z != 0f)
+        rb.linearDamping = playerController.grounded ? 5f : 0f;
+
+        if (rb.linearVelocity.x != 0f || rb.linearVelocity.z != 0f)
         {
             if(!moveFeedback.IsPlaying)
             {
