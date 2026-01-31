@@ -10,11 +10,13 @@ public class SwapManager : MonoBehaviour
 
     private void OnEnable()
     {
+        if (InputManager.Instance == null) return;
         InputManager.Instance.swapAction.action.performed += OnSwapButton;
     }
 
     private void OnDisable()
     {
+        if (InputManager.Instance == null) return;
         InputManager.Instance.swapAction.action.performed -= OnSwapButton;
 
     }
@@ -27,8 +29,11 @@ public class SwapManager : MonoBehaviour
 
     private void Start()
     {
+        if (InputManager.Instance == null) return;
         player1.SetActive(true);
         player2.SetActive(false);
+        InputManager.Instance.swapAction.action.performed += OnSwapButton;
+
     }
 
     private void SwapPlayer()

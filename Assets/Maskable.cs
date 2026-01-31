@@ -9,31 +9,33 @@ public class Maskable : MonoBehaviour
 
     public GameObject currentMaskedObject;
 
-
-    public void OnMask()
+    public void OnMask(Transform newParent)
     {
         if(currentMaskedObject == null)
         {
             currentMaskedObject = new GameObject("MaskedObject");
 
-            MeshFilter original = gameObject.GetComponent<MeshFilter>();
-            MeshRenderer copy = currentMaskedObject.AddComponent<MeshRenderer>();
+            MeshFilter originalMeshFilter = gameObject.GetComponent<MeshFilter>();
+            MeshFilter copyMeshFilter = currentMaskedObject.AddComponent<MeshFilter>();
+            copyMeshFilter.mesh = originalMeshFilter.mesh;
 
-            MeshFilter mf = currentMaskedObject.GetComponent<MeshFilter>();
-            MeshRenderer mr = currentMaskedObject.GetComponent<MeshRenderer>();
+            MeshRenderer originalMeshRenderer = gameObject.GetComponent<MeshRenderer>();
+            MeshRenderer copyMeshRenderer = currentMaskedObject.AddComponent<MeshRenderer>();
+            copyMeshRenderer.materials = originalMeshRenderer.materials;
 
-            currentMaskedObject.get
-
-
+            currentMaskedObject.transform.parent = gameObject.transform.parent;
 
         }
+        currentMaskedObject.transform.SetParent(gameObject.transform.parent, false);
+        gameObject.transform.SetParent(newParent, false);
     }
 
     private void Update()
     {
         if (currentMaskedObject == null) return;
 
-
+        currentMaskedObject.transform.localPosition = gameObject.transform.localPosition;
+        currentMaskedObject.transform.localRotation = gameObject.transform.localRotation;
     }
 
 }
