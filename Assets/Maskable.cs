@@ -1,4 +1,5 @@
 using MoreMountains.Feedbacks;
+using System.Collections;
 using System.Reflection;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -7,11 +8,15 @@ public class Maskable : MonoBehaviour
 {
     [SerializeField] MMF_Player maskFeedback;
 
+    [SerializeField] Material shadowMaterial;
+
     public GameObject currentMaskedObject;
 
-    public void OnMask(Transform newParent)
+    private IEnumerator MaskRoutine(Transform newParent)
     {
-        if(currentMaskedObject == null)
+        yield return StartCoroutine(maskFeedback.PlayFeedbacksCoroutine(transform.position, 1f, false));
+
+        if (currentMaskedObject == null)
         {
             currentMaskedObject = new GameObject("MaskedObject");
 
@@ -23,11 +28,18 @@ public class Maskable : MonoBehaviour
             MeshRenderer copyMeshRenderer = currentMaskedObject.AddComponent<MeshRenderer>();
             copyMeshRenderer.materials = originalMeshRenderer.materials;
 
+            currentMaskedObject.GetComponent<Renderer>().material = shadowMaterial;
+
             currentMaskedObject.transform.parent = gameObject.transform.parent;
 
         }
         currentMaskedObject.transform.SetParent(gameObject.transform.parent, false);
         gameObject.transform.SetParent(newParent, false);
+    }
+
+    public void OnMask(Transform newParent)
+    {
+        StartCoroutine(MaskRoutine(newParent));
     }
 
     private void Update()
@@ -36,6 +48,7 @@ public class Maskable : MonoBehaviour
 
         currentMaskedObject.transform.localPosition = gameObject.transform.localPosition;
         currentMaskedObject.transform.localRotation = gameObject.transform.localRotation;
+        currentMaskedObject.transform.localScale = gameObject.transform.localScale;
     }
 
 }
