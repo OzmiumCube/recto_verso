@@ -101,7 +101,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3598327261013037960}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af3b48483ccb79948a3eb3bbb7dc45d1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2227298dc7d27143a656f5245a72d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  acceleration: 20
+  moveSpeed: 9
+  acceleration: 50
 --- !u!114 &5325059719521822040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 2014521730808248567}
-  sensitivity: 2
+  sensitivity: 0.7
 --- !u!114 &4794258768181250124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965612e458039134ca438df0cdaf4490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalJumpForce: 6.5
-  horizontalJumpForce: 6.5
+  verticalJumpForce: 12
+  horizontalJumpForce: 0
 --- !u!114 &3237764477945906499
 MonoBehaviour:
   m_ObjectHideFlags: 0
