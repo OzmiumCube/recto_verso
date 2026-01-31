@@ -214,8 +214,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1022985078}
+  m_Children: []
   m_Father: {fileID: 1208499892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474556981
@@ -873,7 +872,7 @@ GameObject:
   - component: {fileID: 1022985079}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Maskable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -887,11 +886,11 @@ Transform:
   m_GameObject: {fileID: 1022985077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.08, y: 3.856, z: -2}
+  m_LocalPosition: {x: -92.92, y: 3.856, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 458445582}
+  m_Father: {fileID: 2126368852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1022985079
 BoxCollider:
@@ -1952,7 +1951,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1022985078}
   m_Father: {fileID: 552483200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
