@@ -27,8 +27,8 @@ public class SwapManager : MonoBehaviour
 
     private void Start()
     {
-        player1.SetActive(true);
-        player2.SetActive(false);
+        //player1.SetActive(true);
+        //player2.SetActive(false);
     }
 
     private void SwapPlayer()
