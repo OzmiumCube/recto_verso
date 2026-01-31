@@ -75,9 +75,9 @@ public class Interact : MonoBehaviour
 
     private void SwapObject(GameObject objectHit)
     {
-        Transform roomTransform = objectHit.transform.parent.transform;
+        Transform roomTransform = objectHit.transform.parent;
 
-        if(roomTransform == room1Maskables)
+        if (roomTransform == room1Maskables)
         {
             print("Moving to room 2!");
             objectHit.transform.SetParent(room2Maskables, false);
