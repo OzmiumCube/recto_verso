@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,9 @@ public class Move : MonoBehaviour
    // public InputActionReference sprintAction;
     Rigidbody rb;
     Vector2 moveInput;
-    bool isSprinting; 
+    bool isSprinting;
+
+    [SerializeField] MMF_Player moveFeedback;
 
     private PlayerController playerController;
 
@@ -68,6 +71,15 @@ public class Move : MonoBehaviour
         Vector3 newXZ = Vector3.MoveTowards(currentXZ, targetVel, acceleration * Time.fixedDeltaTime);
         rb.linearVelocity = new Vector3(newXZ.x, rb.linearVelocity.y, newXZ.z);
         rb.linearDamping = inputDir.magnitude > 0.1f ? 0f : 5f;
+
+        if(rb.linearVelocity.x != 0f || rb.linearVelocity.z != 0f)
+        {
+            if(!moveFeedback.IsPlaying)
+            {
+                moveFeedback.PlayFeedbacks();
+            }
+        }
+
     }
 
     bool IsGrounded()
