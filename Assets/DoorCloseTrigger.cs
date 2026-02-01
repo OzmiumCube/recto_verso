@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorTrigger : MonoBehaviour
+public class DoorCloseTrigger : MonoBehaviour
 {
     [SerializeField] Door door;
 
@@ -8,7 +8,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if(other.transform.CompareTag("Player"))
         {
-            door.DoorTriggered();
+            door.DoorCloseTriggered();
             gameObject.SetActive(false);
         }
     }
