@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private void SwitchLevel()
     {
         print("Escaped!");
-        SceneManager.LoadScene("Main_Menu");
+        SceneManager.LoadScene(nextLevelSceneName);
     }
 
 }
