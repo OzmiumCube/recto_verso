@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     public InputActionReference lookAction;
     public InputActionReference swapObjectAction;
     public InputActionReference kickObjectAction;
+    public InputActionReference escapeAction;
 
     void EnableActions()
     {
@@ -22,6 +23,7 @@ public class InputManager : MonoBehaviour
         jumpAction.action.Enable();
         lookAction.action.Enable();
         kickObjectAction.action.Enable();
+        escapeAction.action.Enable();
     }
 
     void DisableActions()
@@ -32,6 +34,7 @@ public class InputManager : MonoBehaviour
         lookAction.action.Disable();
         swapObjectAction.action.Disable();
         kickObjectAction.action.Disable();
+        escapeAction.action.Disable();
     }
 
     private void Awake()
