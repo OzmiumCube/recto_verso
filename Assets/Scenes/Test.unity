@@ -14602,7 +14602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOneEscaped: 0
   playerTwoEscaped: 0
-  nextLevelSceneName: 
+  nextLevelSceneName: leveltwo
 --- !u!1001 &1021551046
 PrefabInstance:
   m_ObjectHideFlags: 0
