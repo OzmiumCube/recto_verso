@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject main;
+    [SerializeField] Look player1Look;
+    [SerializeField] Look player2Look;
 
     private void Start()
     {
@@ -28,6 +31,8 @@ public class PauseMenu : MonoBehaviour
         main.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        player1Look.enabled = false;
+        player2Look.enabled = false;
     }
 
     public void Resume()
@@ -35,13 +40,14 @@ public class PauseMenu : MonoBehaviour
         main.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        player1Look.enabled = true;
+        player2Look.enabled = true;
 
     }
 
     public void Exit()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Main_Menu");
     }
 
 
