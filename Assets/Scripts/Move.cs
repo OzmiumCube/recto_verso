@@ -77,7 +77,7 @@ public class Move : MonoBehaviour
         {
             if(!moveFeedback.IsPlaying)
             {
-                moveFeedback.PlayFeedbacks();
+                //moveFeedback.PlayFeedbacks();
             }
         }
 
