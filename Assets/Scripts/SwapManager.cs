@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,22 @@ public class SwapManager : MonoBehaviour
     [SerializeField] GameObject player2;
 
     public int currentPlayer = 1;
+
+    public event Action<int> OnPlayerSwap;
+
+    public static SwapManager Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void OnEnable()
     {
@@ -41,6 +58,7 @@ public class SwapManager : MonoBehaviour
         player1.SetActive(!player1.activeSelf);
         player2.SetActive(!player2.activeSelf);
         currentPlayer = currentPlayer == 1 ? 2 : 1;
+        OnPlayerSwap?.Invoke(currentPlayer);
     }
 
 

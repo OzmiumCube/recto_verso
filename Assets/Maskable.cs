@@ -16,6 +16,7 @@ public class Maskable : MonoBehaviour
 
     private IEnumerator MaskRoutine(Transform newParent)
     {
+        if (maskFeedback.IsPlaying) yield break;
         maskFeedback.PlayFeedbacks();
         yield return new WaitForSeconds(1f);
 

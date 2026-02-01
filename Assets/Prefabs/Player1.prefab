@@ -377,13 +377,13 @@ GameObject:
   - component: {fileID: 2961175751949118286}
   - component: {fileID: 275108961337521349}
   - component: {fileID: 7192641653553845590}
-  - component: {fileID: 5479138742709903472}
   - component: {fileID: 5395228711324365829}
   - component: {fileID: 471997996357120364}
   - component: {fileID: 8969027697094671037}
   - component: {fileID: 5325059719521822040}
   - component: {fileID: 4794258768181250124}
   - component: {fileID: 3237764477945906499}
+  - component: {fileID: 2704096126962077289}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -400,8 +400,8 @@ Transform:
   m_GameObject: {fileID: 3598327261013037960}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0243, y: 3.943, z: 0}
-  m_LocalScale: {x: 0.9513, y: 0.943, z: 1}
+  m_LocalPosition: {x: 0.1068, y: 3.8861, z: 0.124}
+  m_LocalScale: {x: 0.78625363, y: 0.8861371, z: 0.752}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2014521730808248567}
@@ -462,29 +462,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5479138742709903472
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3598327261013037960}
-  m_Material: {fileID: 13400000, guid: af3b48483ccb79948a3eb3bbb7dc45d1, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Height: 1.8664075
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.062481213, z: 0}
 --- !u!54 &5395228711324365829
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -588,6 +565,29 @@ MonoBehaviour:
   kickForce: 0
   room1Maskables: {fileID: 0}
   room2Maskables: {fileID: 0}
+--- !u!136 &2704096126962077289
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598327261013037960}
+  m_Material: {fileID: 13400000, guid: af3b48483ccb79948a3eb3bbb7dc45d1, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.48
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7012305052006940292
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 75
   orthographic: 0
