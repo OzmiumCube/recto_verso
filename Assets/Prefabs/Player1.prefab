@@ -561,8 +561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swapRange: 8
-  kickRange: 0
-  kickForce: 0
+  kickRange: 2
+  kickForce: 20
   room1Maskables: {fileID: 0}
   room2Maskables: {fileID: 0}
 --- !u!136 &2704096126962077289
